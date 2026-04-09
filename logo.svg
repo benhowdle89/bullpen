@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 160" fill="none">
   <!-- Background pill -->
-  <rect x="0" y="0" width="600" height="160" rx="16" fill="#1a1a2e"/>
+  <rect x="0" y="0" width="700" height="160" rx="16" fill="#1a1a2e"/>
 
   <!-- Book icon -->
   <g transform="translate(32, 30)">
