@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.svg" alt="Bullpen" width="600">
+  <img src="logo.svg?v=2" alt="Bullpen" width="600">
 </p>
 
 <p align="center">
