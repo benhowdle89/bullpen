@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bullpen - Write in Markdown, Publish Everywhere</title>
+  <meta name="description" content="A self-publishing pipeline for authors who'd rather write than wrestle with tools. Markdown to PDF, EPUB, MOBI, HTML, and KDP paperback."/>
+  <meta property="og:title" content="Bullpen"/>
+  <meta property="og:description" content="Write your book in markdown, publish everywhere. PDF, EPUB, MOBI, HTML, KDP paperback, and cover wrap from a single pipeline."/>
+  <meta property="og:image" content="https://benhowdle89.github.io/bullpen/logo.png"/>
+  <meta property="og:url" content="https://benhowdle89.github.io/bullpen/"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #0d0d1a;
+      color: #e0e0e0;
+      line-height: 1.7;
+    }
+
+    a { color: #e94560; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 5rem 0 3rem;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      margin-bottom: 2rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #8a8a9a;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Quickstart */
+    .quickstart {
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      margin: 3rem 0;
+    }
+
+    .quickstart h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8a8a9a;
+      margin-bottom: 1.2rem;
+    }
+
+    .quickstart ol {
+      padding-left: 1.4rem;
+      color: #ccc;
+    }
+
+    .quickstart li {
+      margin-bottom: 0.8rem;
+    }
+
+    .quickstart code {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      background: #0d0d1a;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+      color: #e94560;
+    }
+
+    .quickstart pre {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      background: #0d0d1a;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #ccc;
+      overflow-x: auto;
+      margin-top: 0.5rem;
+    }
+
+    .quickstart .prompt {
+      color: #8a8a9a;
+      font-style: italic;
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    /* Features */
+    .features {
+      padding: 2rem 0;
+    }
+
+    .features h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 560px) {
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature {
+      background: #1a1a2e;
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+    }
+
+    .feature h3 {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature p {
+      font-size: 0.9rem;
+      color: #8a8a9a;
+      line-height: 1.5;
+    }
+
+    /* Pipeline */
+    .pipeline {
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .pipeline h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.85rem;
+    }
+
+    .pipeline-step {
+      background: #1a1a2e;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      color: #ccc;
+    }
+
+    .pipeline-arrow {
+      color: #e94560;
+      font-size: 1.1rem;
+    }
+
+    /* Claude Code */
+    .claude {
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+    }
+
+    .claude h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .claude p {
+      color: #8a8a9a;
+      margin-bottom: 0.8rem;
+    }
+
+    .claude ul {
+      padding-left: 1.4rem;
+      color: #ccc;
+    }
+
+    .claude li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 3rem 0 5rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: #e94560;
+      color: #fff;
+      padding: 0.9rem 2.4rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+    }
+
+    .cta a:hover {
+      background: #c81d4e;
+      text-decoration: none;
+    }
+
+    .cta p {
+      margin-top: 1rem;
+      color: #8a8a9a;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid #1a1a2e;
+      color: #555;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="hero">
+      <img src="logo.svg" alt="Bullpen"/>
+      <p>The self-publishing pipeline for authors who'd rather write than wrestle with tools.</p>
+    </div>
+
+    <div class="pipeline">
+      <h2>One command, every format</h2>
+      <div class="pipeline-flow">
+        <span class="pipeline-step">Markdown</span>
+        <span class="pipeline-arrow">&rarr;</span>
+        <span class="pipeline-step">PDF</span>
+        <span class="pipeline-step">EPUB</span>
+        <span class="pipeline-step">MOBI</span>
+        <span class="pipeline-step">HTML</span>
+        <span class="pipeline-step">KDP Paperback</span>
+        <span class="pipeline-step">Cover Wrap</span>
+      </div>
+    </div>
+
+    <div class="features">
+      <h2>What you get</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Write in markdown</h3>
+          <p>One file per chapter, organised by part. No proprietary formats or lock-in.</p>
+        </div>
+        <div class="feature">
+          <h3>Two-tier packaging</h3>
+          <p>A "book only" and "book + extras" package for different price points, ready to upload.</p>
+        </div>
+        <div class="feature">
+          <h3>Free chapter lead magnet</h3>
+          <p>Generates a standalone PDF of any chapter with a cover page and buy CTA.</p>
+        </div>
+        <div class="feature">
+          <h3>KDP print-ready</h3>
+          <p>6x9 inch paperback interior with proper margins, plus a full cover wrap with calculated spine.</p>
+        </div>
+        <div class="feature">
+          <h3>Prose linting</h3>
+          <p>Vale integration with sensible defaults for narrative non-fiction.</p>
+        </div>
+        <div class="feature">
+          <h3>Output verification</h3>
+          <p>Spot-checks generated PDFs against your source to catch dropped words.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="claude">
+      <h2>Built for Claude Code</h2>
+      <p>The repo includes a <code>CLAUDE.md</code> that gives Claude full context on the pipeline. Clone it, open Claude Code, and tell it about your book:</p>
+      <p class="prompt" style="font-style: italic; color: #ccc;">"Set up this repo for my book called [title] by [name]. It has [n] parts with [n] chapters each."</p>
+      <p>Claude Code will update your config, create chapter files, and install dependencies in one go. When you're ready:</p>
+      <p class="prompt" style="font-style: italic; color: #ccc;">"Run the full build pipeline."</p>
+    </div>
+
+    <div class="quickstart">
+      <h2>Manual quickstart</h2>
+      <ol>
+        <li>Install dependencies
+          <pre>brew install pandoc vale
+brew install --cask calibre  # optional, for MOBI
+pip install -r requirements.txt
+vale sync</pre>
+        </li>
+        <li>Edit <code>config.json</code> with your book's metadata and chapter structure</li>
+        <li>Write your chapters in <code>manuscript/</code></li>
+        <li>Build everything
+          <pre>./scripts/build-final.sh</pre>
+        </li>
+      </ol>
+    </div>
+
+    <div class="cta">
+      <a href="https://github.com/benhowdle89/bullpen">View on GitHub</a>
+      <p>MIT License. Use it for your own book.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      Built by <a href="https://benhowdle.im">Ben Howdle</a>
+    </div>
+  </footer>
+
+</body>
+</html>
