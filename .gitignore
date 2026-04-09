@@ -1,0 +1,21 @@
+# Build outputs
+output/
+templates/*.pdf
+
+# Temp files
+.manuscript-combined.md
+.paperback-interior.html
+.free-chapter.html
+.cover-temp.png
+
+# Vale style packages (fetched by `vale sync`)
+styles/Google/
+styles/proselint/
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/

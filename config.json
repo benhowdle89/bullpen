@@ -1,0 +1,43 @@
+{
+  "title": "Your Book Title",
+  "subtitle": "Your Subtitle",
+  "author": "Your Name",
+  "language": "en-GB",
+  "website": "yourwebsite.com",
+  "year": "2026",
+  "buy_url": "https://yourwebsite.com/buy",
+  "page_count": 150,
+
+  "free_chapter": {
+    "file": "manuscript/part-1/01-chapter-title.md",
+    "title": "Chapter 1: Your Chapter Title"
+  },
+
+  "manuscript": {
+    "front_matter": [
+      "manuscript/front-cover.md",
+      "manuscript/copyright.md",
+      "manuscript/dedications.md",
+      "manuscript/epigraph.md"
+    ],
+    "intro": "manuscript/intro.md",
+    "parts": [
+      {
+        "number": 1,
+        "title": "Part One Title",
+        "intro": "manuscript/part-1/part-intro.md",
+        "chapters": [
+          "manuscript/part-1/01-chapter-title.md",
+          "manuscript/part-1/02-chapter-title.md",
+          "manuscript/part-1/03-chapter-title.md"
+        ]
+      }
+    ],
+    "outro": "manuscript/outro.md",
+    "appendix": "manuscript/appendix.md",
+    "back_matter": [
+      "manuscript/about-the-author.md",
+      "manuscript/back-cover.md"
+    ]
+  }
+}

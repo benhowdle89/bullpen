@@ -1,0 +1,109 @@
+/* ── Book EPUB Stylesheet ── */
+/* Passed to pandoc via --css flag in generate_final.py */
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #1a1a1a;
+}
+
+p {
+    margin: 0 0 0.6em 0;
+    text-indent: 0;
+    text-align: left;
+}
+
+h1 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 0.3em;
+    text-align: left;
+    line-height: 1.2;
+    page-break-before: always;
+}
+
+h2 {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #333;
+    margin-top: 2.4em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    text-align: left;
+}
+
+/* Pull quotes */
+.pull-quote {
+    margin: 1.5em 1em;
+    padding: 0.8em 0;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.05em;
+    color: #222;
+    line-height: 1.5;
+}
+
+blockquote {
+    margin: 1em 0 1em 1em;
+    font-style: italic;
+    font-size: 0.95em;
+    color: #333;
+    border: none;
+}
+
+blockquote p {
+    text-indent: 0;
+    text-align: left;
+    font-style: italic;
+    margin-bottom: 0.4em;
+}
+
+ul, ol { margin: 0.8em 0; padding-left: 1.5em; }
+li { margin-bottom: 0.4em; text-align: left; }
+li p { text-indent: 0; text-align: left; }
+em { font-style: italic; }
+strong { font-weight: bold; }
+hr { border: none; text-align: center; margin: 1.5em 0; }
+
+.front-cover { text-align: center; padding: 3em 0; page-break-after: always; }
+.cover-title { font-size: 2.2em; font-weight: bold; margin-bottom: 0.3em; line-height: 1.1; }
+.cover-subtitle { font-size: 1.2em; font-style: italic; color: #555; margin-bottom: 1.5em; }
+.cover-author { font-size: 1em; color: #777; text-transform: uppercase; letter-spacing: 0.1em; }
+
+.copyright-page { font-size: 0.85em; color: #555; line-height: 1.8; page-break-after: always; }
+.copyright-page p { margin-bottom: 0.5em; }
+
+.dedications { text-align: center; padding: 4em 1em; page-break-after: always; }
+.dedication { margin-bottom: 2em; }
+.dedication-to { font-style: italic; font-size: 1.1em; display: block; margin-bottom: 0.2em; }
+.dedication-reason { font-style: italic; font-size: 0.85em; color: #888; display: block; }
+
+.epigraph { text-align: center; padding: 4em 1.5em; page-break-after: always; }
+.epigraph blockquote { border: none; font-size: 1.1em; font-style: italic; color: #333; text-align: center; }
+.epigraph-attribution { display: block; margin-top: 1em; font-style: normal; font-size: 0.85em; color: #777; }
+
+.part-title { text-align: center; padding: 4em 0; page-break-before: always; page-break-after: always; font-size: 1.5em; font-weight: bold; }
+.part-title .part-label { font-size: 0.5em; text-transform: uppercase; letter-spacing: 0.15em; color: #888; font-weight: normal; display: block; }
+.part-subtitle { font-size: 0.5em; font-weight: normal; font-style: italic; color: #555; margin: 1em auto 0; }
+
+.about-author { page-break-before: always; padding: 2em 0; }
+.about-author h2 { text-align: center; margin-bottom: 1.5em; }
+.about-author p { text-align: left; line-height: 1.7; }
+
+.back-cover { page-break-before: always; padding: 3em 1em; }
+.back-cover p { line-height: 1.7; color: #333; }
+
+.page-break { page-break-after: always; }
