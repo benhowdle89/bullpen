@@ -38,10 +38,14 @@ OUTRO = _m["outro"]
 APPENDIX = _m.get("appendix", "")
 PARTS = [{"num": p["number"], "title": p["title"], "intro": p.get("intro", ""), "chapters": p["chapters"]} for p in _m["parts"]]
 
-# KDP specs: adjust inside margin based on page count
-# Under 150 pages: 0.75in. Over 150: 0.875in.
+# KDP specs: the inside margin (gutter) is the one that grows with page count.
+# KDP's published minimums, "Set Trim Size, Bleed, and Margins":
+#   24-150 pages 0.375in | 151-300 0.5in | 301-500 0.625in
+#   501-700 0.75in      | 701-828 0.875in
+# The 0.75in default is comfortably above the minimum up to 700 pages.
 # Set this after your first build, based on the page count reported.
 INSIDE_MARGIN = "0.75in"
+OUTSIDE_MARGIN = "0.5in"
 
 
 def read_file(relpath):
@@ -76,8 +80,6 @@ def build_html():
     size: 6in 9in;
     margin-top: 0.5in;
     margin-bottom: 0.6in;
-    margin-inside: {INSIDE_MARGIN};
-    margin-outside: 0.5in;
     @bottom-center {{
         content: counter(page);
         font-family: Georgia, serif;
@@ -85,6 +87,11 @@ def build_html():
         color: #555;
     }}
 }}
+/* The gutter has to be mirrored per side. WeasyPrint does not implement
+   margin-inside / margin-outside - those are Prince extensions - so the
+   :left / :right page selectors are what actually produces a binding margin. */
+@page :right {{ margin-left: {INSIDE_MARGIN}; margin-right: {OUTSIDE_MARGIN}; }}
+@page :left  {{ margin-left: {OUTSIDE_MARGIN}; margin-right: {INSIDE_MARGIN}; }}
 @page :blank {{ @bottom-center {{ content: none; }} }}
 @page frontmatter {{ @bottom-center {{ content: none; }} }}
 @page chapter-opening {{ @bottom-center {{ content: none; }} }}
@@ -298,8 +305,9 @@ def main():
         doc.close()
         print(f"\n  Generated: {os.path.basename(pdf_path)}")
         print(f"  Pages: {pages}")
-        if pages > 150:
-            print(f"  Note: Over 150 pages - set INSIDE_MARGIN = '0.875in' in this script.")
+        if pages > 700:
+            print(f"  Note: Over 700 pages - KDP requires a 0.875in gutter.")
+            print(f"        Set INSIDE_MARGIN = '0.875in' in this script and rebuild.")
         spine = pages * 0.0025
         print(f"  Estimated spine: {spine:.3f} inches")
     except ImportError:
